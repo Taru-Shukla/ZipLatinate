@@ -37,20 +37,6 @@ def zip_code_pop(zip_code):
         return {"county": county, "latitude": latitude, "longitude": longitude, "population": population}
     return None
 
-# def zip_code_pop(zip_code):
-#     df = pd.read_csv('uszips.csv')
-#     df['zip'] = df['zip'].astype(str)  # Ensure zip code is a string
-#     print(df[df['zip'] == zip_code])  # Debugging print
-#     try:
-#         county = df[df['zip'] == zip_code]['county_name'].item()  # Use item() to get the value
-#         latitude = df[df['zip'] == zip_code]['lat'].item()
-#         longitude = df[df['zip'] == zip_code]['lng'].item()
-#         population = df[df['zip'] == zip_code]['population'].item()
-
-#         return {"county": county, "latitude": latitude, "longitude": longitude, "population": population}
-#     except ValueError:
-#         print(f"Zip code {zip_code} not found.")
-
 @app.route('/convert_name', methods=['POST'])
 def convert_name():
     name = request.json['name']
@@ -66,5 +52,3 @@ def zipcode_info():
         return jsonify(info)
     return jsonify({"error": "Zip code not found"}), 404
 
-if __name__ == '__main__':
-    app.run(debug=True)
